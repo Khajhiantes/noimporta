@@ -4,9 +4,7 @@
     font-size: var(--fsLarge);
     border: 2px solid var(--colorNegro);
     margin: auto;
-    width: 275px;
-    height: 178px;
-
+   
   }
   
   .btn-primario:hover,

@@ -16,6 +16,8 @@ import DetalleMateriaPage from './pages/DetalleMateriaPage/DetalleMateriaPage'
 import ListadoPedidosPendientesPage from "./pages/ListadoPedidosPendientesPage/ListadoPedidosPendientesPage";
 import ListadoDeProveedores from "./pages/ListadoDeProveedores/ListadoDeProveedores";
 import ListadoDeClientes from "./pages/ListadoDeClientes/ListadoDeClientes";
+import AdminVentas from "./pages/AdminVentas/AdminVentas";
+import ReporteDeCompras from "./pages/ReporteDeCompras/ReporteDeCompras";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +55,14 @@ const router = createBrowserRouter([
   {
     path: "admin/reporteClientes",
     element: <ListadoDeClientes />,
+  },
+  {
+    path: "admin/adminVentas",
+    element: <AdminVentas />,
+  },
+  {
+    path: "admin/reporteDeCompras",
+    element: <ReporteDeCompras />,
   },
   {
     path: "ventas/clientes",

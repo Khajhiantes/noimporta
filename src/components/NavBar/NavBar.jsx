@@ -18,8 +18,14 @@ const areasToNavLinks = {
     Proveedores: "/ventas/proveedores",
     Pedidos: "/ventas/pedidos",
   },
-  admin: {
+  admin:{
+    
   },
+  adminComprasVentas:{
+    Ventas:"",
+    Compras:""
+  }
+  
 };
 
 // area = 'prod' | 'compras' | 'ventas' | 'admin'

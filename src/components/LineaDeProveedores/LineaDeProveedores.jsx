@@ -14,7 +14,7 @@ export default function LineaMateriaPrima({
       <Td>{telefono}</Td>
       <Td>{ perfil} </Td>
       <Td>
-        <Checkbox />
+        <Checkbox background={"violet"}/>
       </Td>
     </Tr>
   );

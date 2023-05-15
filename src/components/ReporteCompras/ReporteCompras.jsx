@@ -3,19 +3,16 @@ import { EditIcon } from '@chakra-ui/icons'
 
 export default function LineaMateriaPrima({
   id,
-  nombre,
-  sector,
-  telefono,
-  perfil
+  producto,
+  cantidad,
+  total
 }) {
   return (
     <Tr key={id}>
       <Td>{id}</Td>
-      <Td>{nombre}</Td>
-      <Td>{sector}</Td>
-      <Td>{telefono}</Td>
-      <Td>{ perfil} </Td>
+      <Td>{producto}</Td>
+      <Td>{cantidad}</Td>
+      <Td>{total}</Td>
     </Tr>
   );
 }
-
