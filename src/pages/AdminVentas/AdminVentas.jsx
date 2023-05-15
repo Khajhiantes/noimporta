@@ -1,52 +1,96 @@
+
 import Input from "../../components/Input/Input";
 import Layout from "../../components/Layout/Layout";
-import LineaPedidoPendiente from "../../components/AdminVentas/AdminVentas";
+import AdminVentass from "../../components/AdminVentas/AdminVentas";
 import "../ListadoPedidosPendientesPage/ListadoPedidosPendientesPage.css";
-import { Table, Thead, Tbody, Tr, Th, TableContainer } from "@chakra-ui/react";
+import { Table, Thead, Tbody, Tr, Th, TableContainer,Checkbox } from "@chakra-ui/react";
 import {AddIcon} from '@chakra-ui/icons'
 import Button from "../../components/Button/Button";
 import { React } from "react";
+import { useState } from "react";
 import { color } from "framer-motion";
 
-const pedidosPendientes = [
+const initialPedidosPendientes = [
   {
+    id: 1,
     cliente: "Cliente",
     producto: "Mueble",
     unidades: 5,
     tipo: "A2",
-    total:9999,
-    isChecked:false,
-    onItemChecked:false,
+    total: 9999,
+    isChecked: false,
   },
   {
+    id: 2,
     cliente: "Cliente",
     producto: "Mueble",
     unidades: 5,
     tipo: "A2",
-    total:9999,
+    total: 9999,
+    isChecked: false,
   },
   {
+    id: 3,
     cliente: "Cliente",
     producto: "Mueble",
     unidades: 5,
     tipo: "A2",
-    total:9999,
+    total: 9999,
+    isChecked: false,
   },
   {
+    id: 4,
     cliente: "Cliente",
     producto: "Mueble",
     unidades: 5,
     tipo: "A2",
-    total:9999,
+    total: 9999,
+    isChecked: false,
   },
 ];
 
+
+
 export default function ListadoPedidosPendientesPage() {
-  const lineaDePedidoPendiente= pedidosPendientes.map((pedidos) => {
-    return <LineaPedidoPendiente {...pedidos} />;
+  const [allChecked, setAllChecked] = useState(false); // Estado para controlar la selección de todas las casillas
+  const [pedidosPendientes, setPedidosPendientes] = useState(initialPedidosPendientes);
+  
+
+  const handleAllChecked = () => {
+    const updatedPedidos = pedidosPendientes.map((pedido) => {
+      return {
+        ...pedido,
+        isChecked: !allChecked,
+      };
+    });
+    setPedidosPendientes(updatedPedidos);
+    setAllChecked(!allChecked);
+  };
+  const handleItemChecked = (id) => {
+    const updatedPedidos = pedidosPendientes.map((pedido) => {
+      if (pedido.id === id) {
+        return {
+          ...pedido,
+          isChecked: !pedido.isChecked,
+        };
+      }
+      return pedido;
+    });
+    setPedidosPendientes(updatedPedidos);
+  };
+
+  const lineaDePedidoPendiente= pedidosPendientes.map((pedido) => {
+    return <AdminVentass
+    key={pedido.id}
+      {...pedido}
+      isChecked={pedido.isChecked}
+      onItemChecked={handleItemChecked} />;
   });
 
   return (
+
+    
+
     <Layout area="admin">
       <div className="pedidos-pendientes">
           <h1 className="titulo">Ventas</h1>
@@ -68,10 +112,10 @@ export default function ListadoPedidosPendientesPage() {
               <Tr>
               <Checkbox
                 isChecked={allChecked}
-                isIndeterminate={isIndeterminate}
                 onChange={handleAllChecked}
+               
               >
-                Seleccionar Todo
+              Seleccionar Todo
               </Checkbox>
                 <Th>CLIENTE</Th>
                 <Th>PRODUCTO</Th>
@@ -88,3 +132,4 @@ export default function ListadoPedidosPendientesPage() {
       </Layout>
   );
 }
+
